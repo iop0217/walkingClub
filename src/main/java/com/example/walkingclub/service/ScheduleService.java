@@ -45,4 +45,11 @@ public class ScheduleService {
         schedule.update(requestDto.getTitle(), requestDto.getContent());
         return ScheduleResponseDto.builder().scheduleId(schedule.getId()).build();
     }
+
+    // 일정 삭제
+    @Transactional
+    public void deleteSchedule(Long id) {
+        Schedule schedule = scheduleRepository.findById(id).orElseThrow();
+        scheduleRepository.delete(schedule);
+    }
 }
