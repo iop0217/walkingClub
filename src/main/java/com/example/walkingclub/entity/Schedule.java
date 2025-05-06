@@ -27,4 +27,10 @@ public class Schedule {
     private Long commentCount;          // 댓글 개수
     private LocalDateTime createdAt;    // 일정 작성일
     private LocalDateTime updatedAt;    // 일정 수정일
+
+    // 일정 수정
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
