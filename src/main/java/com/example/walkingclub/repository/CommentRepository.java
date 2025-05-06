@@ -1,9 +1,9 @@
 package com.example.walkingclub.repository;
 
-import com.example.walkingclub.entity.Schedule;
+import com.example.walkingclub.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 }
