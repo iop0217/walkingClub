@@ -46,4 +46,11 @@ public class ReplyService {
         reply.update(requestDto.getReply());
         return ReplyResponseDto.builder().replyId(reply.getId()).build();
     }
+
+    // 대댓글 삭제
+    @Transactional
+    public void deleteReply(Long id) {
+        Reply reply = replyRepository.findById(id).orElseThrow();
+        replyRepository.delete(reply);
+    }
 }

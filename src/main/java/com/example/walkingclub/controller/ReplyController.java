@@ -43,4 +43,11 @@ public class ReplyController {
         ReplyResponseDto responseDto = replyService.updateReply(id, requestDto);
         return ResponseEntity.ok(responseDto);
     }
+
+    // 대댓글 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteReply(@PathVariable Long id) {
+        replyService.deleteReply(id);
+        return ResponseEntity.noContent().build();
+    }
 }
