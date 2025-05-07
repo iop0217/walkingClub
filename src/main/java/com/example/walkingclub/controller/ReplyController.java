@@ -33,4 +33,14 @@ public class ReplyController {
         List<ReplyResponseDto> responseDto = replyService.getReplies(requestDto);
         return ResponseEntity.ok(responseDto);
     }
+
+    // 대댓글 수정
+    @PutMapping("/{id}")
+    public ResponseEntity<ReplyResponseDto> updateReply(
+            @PathVariable Long id,
+            @Valid @RequestBody ReplyRequestDto requestDto
+    ) {
+        ReplyResponseDto responseDto = replyService.updateReply(id, requestDto);
+        return ResponseEntity.ok(responseDto);
+    }
 }

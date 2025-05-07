@@ -42,4 +42,9 @@ public class Reply {
                 .reply(requestDto.getReply())
                 .build();
     }
+
+    // 대댓글 수정
+    public void update(String reply) {
+        this.reply = reply;
+    }
 }

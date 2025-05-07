@@ -38,4 +38,12 @@ public class ReplyService {
                 .map(ReplyResponseDto::toDto)
                 .collect(Collectors.toList());
     }
+
+    // 대댓글 수정
+    @Transactional
+    public ReplyResponseDto updateReply(Long id, ReplyRequestDto requestDto) {
+        Reply reply = replyRepository.findById(id).orElseThrow();
+        reply.update(requestDto.getReply());
+        return ReplyResponseDto.builder().replyId(reply.getId()).build();
+    }
 }
