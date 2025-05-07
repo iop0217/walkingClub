@@ -24,7 +24,7 @@ public class CommentResponseDto {
     public static CommentResponseDto toDto(Comment comment) {
         return new CommentResponseDto(
                 comment.getWriterId(),
-                comment.getScheduleId(),
+                comment.getScheduleId().getId(),
                 comment.getId(),
                 comment.getComment(),
                 comment.getCreatedAt(),

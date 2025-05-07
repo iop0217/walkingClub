@@ -24,7 +24,7 @@ public class ReplyService {
     @Transactional
     public ReplyResponseDto createReply(ReplyRequestDto requestDto) {
         Comment findComment = commentRepository.findById(requestDto.getCommentId()).orElseThrow();
-        Reply create = Reply.of(findComment.getWriterId(), findComment.getId(), requestDto);
+        Reply create = Reply.of(findComment.getWriterId(), findComment, requestDto);
         Reply reply = replyRepository.save(create);
         return ReplyResponseDto.toDto(reply);
     }
@@ -33,7 +33,7 @@ public class ReplyService {
     @Transactional(readOnly = true)
     public List<ReplyResponseDto> getReplies(ReplyRequestDto requestDto) {
         Comment findComment = commentRepository.findById(requestDto.getCommentId()).orElseThrow();
-        List<Reply> replies = replyRepository.findByCommentId(findComment.getId());
+        List<Reply> replies = replyRepository.findByCommentId(findComment);
         return replies.stream()
                 .map(ReplyResponseDto::toDto)
                 .collect(Collectors.toList());

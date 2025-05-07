@@ -23,7 +23,7 @@ public class CommentService {
     @Transactional
     public CommentResponseDto createComment(CommentRequestDto requestDto) {
         Schedule findSchedule = scheduleRepository.findById(requestDto.getScheduleId()).orElseThrow();
-        Comment create = Comment.of(findSchedule.getWriterId(), findSchedule.getId(), requestDto);
+        Comment create = Comment.of(findSchedule.getWriterId(), findSchedule, requestDto);
         Comment comment = commentRepository.save(create);
         return CommentResponseDto.toDto(comment);
     }
@@ -32,7 +32,7 @@ public class CommentService {
     @Transactional(readOnly = true)
     public List<CommentResponseDto> getComments(CommentRequestDto requestDto) {
         Schedule findSchedule = scheduleRepository.findById(requestDto.getScheduleId()).orElseThrow();
-        List<Comment> comments = commentRepository.findByScheduleId(findSchedule.getId());
+        List<Comment> comments = commentRepository.findByScheduleId(findSchedule);
         return comments.stream()
                 .map(CommentResponseDto::toDto)
                 .collect(Collectors.toList());
