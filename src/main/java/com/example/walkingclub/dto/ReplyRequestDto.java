@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentRequestDto {
+public class ReplyRequestDto {
 
     @NotBlank
-    private Long scheduleId;    // 일정 아이디
+    private Long commentId;     // 댓글 아이디
 
     @NotBlank
     @Size(max = 1000)
-    private String comment;     // 댓글 내용
+    private String reply;       // 대댓글 내용
 }
