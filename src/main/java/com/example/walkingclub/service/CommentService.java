@@ -1,7 +1,6 @@
 package com.example.walkingclub.service;
 import com.example.walkingclub.dto.CommentRequestDto;
 import com.example.walkingclub.dto.CommentResponseDto;
-import com.example.walkingclub.dto.ScheduleResponseDto;
 import com.example.walkingclub.entity.Comment;
 import com.example.walkingclub.entity.Schedule;
 import com.example.walkingclub.repository.CommentRepository;
@@ -45,5 +44,12 @@ public class CommentService {
         Comment comment = commentRepository.findById(id).orElseThrow();
         comment.update(requestDto.getComment());
         return CommentResponseDto.builder().commentId(comment.getId()).build();
+    }
+
+    // 댓글 삭제
+    @Transactional
+    public void deleteComment(Long id) {
+        Comment comment = commentRepository.findById(id).orElseThrow();
+        commentRepository.delete(comment);
     }
 }

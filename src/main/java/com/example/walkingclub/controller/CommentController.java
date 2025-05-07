@@ -43,4 +43,11 @@ public class CommentController {
         CommentResponseDto responseDto = commentService.updateComment(id, requestDto);
         return ResponseEntity.ok(responseDto);
     }
+
+    // 댓글 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
+        commentService.deleteComment(id);
+        return ResponseEntity.noContent().build();
+    }
 }
