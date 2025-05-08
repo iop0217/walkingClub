@@ -20,7 +20,7 @@ public class Schedule extends BaseEntity {
     @Column(name = "scheduleId")
     private Long id;                    // 일정 아이디
 
-    @Column
+    @Column(nullable = false)
     private Long writerId;              // 작성자 아이디
 
     @Column
@@ -31,6 +31,12 @@ public class Schedule extends BaseEntity {
 
     @Column
     private Long commentCount;          // 댓글 개수
+
+    // 작성자 아이디 랜덤
+    @PrePersist
+    public void ramdomWriter() {
+        this.writerId = (long) (Math.random() * 999) + 1;
+    }
 
     // 일정 수정
     public void update(String title, String content) {

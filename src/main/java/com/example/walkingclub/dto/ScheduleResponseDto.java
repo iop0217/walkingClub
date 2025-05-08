@@ -47,6 +47,7 @@ public class ScheduleResponseDto {
 
     public static ScheduleResponseDto toDto(Schedule schedule) {
         return ScheduleResponseDto.builder()
+                .writerId(schedule.getWriterId())
                 .scheduleId(schedule.getId())
                 .title(schedule.getTitle())
                 .content(schedule.getContent())

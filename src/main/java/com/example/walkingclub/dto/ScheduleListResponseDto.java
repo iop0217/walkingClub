@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScheduleListResponseDto {
+    private Long writerId;              // 작성자 아이디
     private Long scheduleId;            // 일정 아이디
     private String title;               // 일정 제목
     private Long commentCount;          // 댓글 개수
@@ -24,6 +25,7 @@ public class ScheduleListResponseDto {
 
     public static ScheduleListResponseDto toDto(Schedule schedule) {
         return new ScheduleListResponseDto(
+                schedule.getWriterId(),
                 schedule.getId(),
                 schedule.getTitle(),
                 schedule.getCommentCount(),
