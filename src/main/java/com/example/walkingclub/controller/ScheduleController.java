@@ -3,7 +3,7 @@ package com.example.walkingclub.controller;
 import com.example.walkingclub.dto.ScheduleListResponseDto;
 import com.example.walkingclub.dto.ScheduleRequestDto;
 import com.example.walkingclub.dto.ScheduleResponseDto;
-import com.example.walkingclub.dto.Views;
+import com.example.walkingclub.dto.View;
 import com.example.walkingclub.service.ScheduleService;
 import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.validation.Valid;
@@ -25,7 +25,7 @@ public class ScheduleController {
 
     // 일정 생성
     @PostMapping
-    @JsonView(Views.Create.class)
+    @JsonView(View.Create.class)
     public ResponseEntity<ScheduleResponseDto> createSchedule(@Valid @RequestBody ScheduleRequestDto requestDto) {
         ScheduleResponseDto responseDto = scheduleService.createSchedule(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
@@ -33,7 +33,7 @@ public class ScheduleController {
 
     // 일정 전체 조회
     @GetMapping
-    @JsonView(Views.Gets.class)
+    @JsonView(View.Gets.class)
     public ResponseEntity<List<ScheduleListResponseDto>> getSchedules() {
         List<ScheduleListResponseDto> listResponseDto = scheduleService.getSchedules();
         return ResponseEntity.ok(listResponseDto);
@@ -41,7 +41,7 @@ public class ScheduleController {
 
     // 일정 단건 조회
     @GetMapping("/{id}")
-    @JsonView(Views.Get.class)
+    @JsonView(View.Get.class)
     public ResponseEntity<ScheduleResponseDto> getSchedule(@PathVariable Long id) {
         ScheduleResponseDto responseDto = scheduleService.getSchedule(id);
         return ResponseEntity.ok(responseDto);
@@ -49,7 +49,7 @@ public class ScheduleController {
 
     // 일정 수정
     @PatchMapping("/{id}")
-    @JsonView(Views.Update.class)
+    @JsonView(View.Update.class)
     public ResponseEntity<ScheduleResponseDto> updateSchedule(
             @PathVariable Long id,
             @Valid @RequestBody ScheduleRequestDto requestDto

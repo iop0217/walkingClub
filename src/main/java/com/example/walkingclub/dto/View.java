@@ -1,6 +1,6 @@
 package com.example.walkingclub.dto;
 
-public class Views {
+public class View {
     public static class All {}
     public static class Create extends All {}
     public static class Gets extends All {}
