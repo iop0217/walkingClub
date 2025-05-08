@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -32,9 +34,11 @@ public class Schedule {
     @Column
     private Long commentCount;          // 댓글 개수
 
+    @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;    // 일정 작성일
 
+    @LastModifiedDate
     @Column
     private LocalDateTime updatedAt;    // 일정 수정일
 

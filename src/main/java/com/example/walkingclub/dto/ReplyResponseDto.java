@@ -20,7 +20,6 @@ public class ReplyResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // 대댓글 저장
     public static ReplyResponseDto toDto(Reply reply) {
         return new ReplyResponseDto(
                 reply.getWriterId(),

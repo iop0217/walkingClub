@@ -18,7 +18,6 @@ public class ScheduleRequestDto {
     @Size(max = 1000)
     private String content; // 일정 내용
 
-    // 매장 생성
     public Schedule toEntity() {
         return Schedule.builder()
                 .title(this.title)

@@ -42,7 +42,6 @@ public class ScheduleResponseDto {
     @JsonView({Views.All.class})
     private LocalDateTime updatedAt;    // 일정 수정일
 
-    // 일정 생성
     public static ScheduleResponseDto toDto(Schedule schedule) {
         return ScheduleResponseDto.builder()
                 .scheduleId(schedule.getId())

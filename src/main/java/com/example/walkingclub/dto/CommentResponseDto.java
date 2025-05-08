@@ -20,7 +20,6 @@ public class CommentResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // 댓글 저장
     public static CommentResponseDto toDto(Comment comment) {
         return new CommentResponseDto(
                 comment.getWriterId(),
