@@ -6,17 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reply {
+public class Reply extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +31,6 @@ public class Reply {
 
     @Column
     private String reply;               // 대댓글 내용
-
-    @CreatedDate
-    @Column(updatable = false)
-    private LocalDateTime createdAt;    // 대댓글 작성일
-
-    @LastModifiedDate
-    @Column
-    private LocalDateTime updatedAt;    // 대댓글 수정일
 
     // 대댓글 저장
     public static Reply of(Long writerId, Comment commentId, ReplyRequestDto requestDto) {

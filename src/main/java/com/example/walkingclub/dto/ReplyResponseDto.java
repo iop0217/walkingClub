@@ -1,6 +1,7 @@
 package com.example.walkingclub.dto;
 
 import com.example.walkingclub.entity.Reply;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,12 +14,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReplyResponseDto {
-    private Long writerId;
-    private Long replyId;
-    private String comment;
-    private String reply;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Long writerId;              // 작성자 아아디
+    private Long replyId;               // 대댓글 아이디
+    private String comment;             // 댓글 내용
+    private String reply;               // 대댓글 내용
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createdAt;    // 작성일
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updatedAt;    // 수정일
 
     public static ReplyResponseDto toDto(Reply reply) {
         return new ReplyResponseDto(
