@@ -4,7 +4,6 @@ import com.example.walkingclub.dto.ReplyRequestDto;
 import com.example.walkingclub.dto.ReplyResponseDto;
 import com.example.walkingclub.entity.Comment;
 import com.example.walkingclub.entity.Reply;
-import com.example.walkingclub.entity.Schedule;
 import com.example.walkingclub.repository.CommentRepository;
 import com.example.walkingclub.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;

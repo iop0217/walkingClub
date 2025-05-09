@@ -5,7 +5,6 @@ import com.example.walkingclub.dto.ReplyResponseDto;
 import com.example.walkingclub.dto.View;
 import com.example.walkingclub.service.ReplyService;
 import com.fasterxml.jackson.annotation.JsonView;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

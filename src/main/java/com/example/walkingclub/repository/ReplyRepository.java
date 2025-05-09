@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
-
-    // 대댓글 조회
     List<Reply> findByComment(Comment comment);
 }
