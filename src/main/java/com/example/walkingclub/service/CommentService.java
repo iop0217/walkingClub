@@ -32,7 +32,7 @@ public class CommentService {
     @Transactional(readOnly = true)
     public List<CommentResponseDto> getComments(CommentRequestDto requestDto) {
         Schedule findSchedule = scheduleRepository.findById(requestDto.getScheduleId()).orElseThrow();
-        List<Comment> comments = commentRepository.findByScheduleId(findSchedule);
+        List<Comment> comments = commentRepository.findBySchedule(findSchedule);
         return comments.stream()
                 .map(CommentResponseDto::toDto)
                 .collect(Collectors.toList());
@@ -42,8 +42,8 @@ public class CommentService {
     @Transactional
     public CommentResponseDto updateComment(Long id, CommentRequestDto requestDto) {
         Comment comment = commentRepository.findById(id).orElseThrow();
-        comment.update(requestDto.getComment());
-        return CommentResponseDto.builder().commentId(comment.getId()).build();
+        comment.update(requestDto.getComments());
+        return CommentResponseDto.toDto(comment);
     }
 
     // 댓글 삭제

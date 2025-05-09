@@ -16,27 +16,27 @@ public class Reply extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "replyId")
+    @Column(name = "reply_id")
     private Long id;                    // 대댓글 아이디
 
-    @JoinColumn(name = "writerId", nullable = false)
+    @JoinColumn(name = "writer_id", nullable = false)
     private Long writerId;              // 작성자 아이디
 
     @ManyToOne
-    @JoinColumn(name = "commentId", nullable = false)
-    private Comment commentId;             // 댓글 아이디
+    @JoinColumn(name = "comment_id", nullable = false)
+    private Comment comment;            // 댓글 아이디
 
     @Column
-    private String comment;             // 댓글 내용
+    private String comments;            // 댓글 내용
 
     @Column
     private String reply;               // 대댓글 내용
 
     // 대댓글 저장
-    public static Reply of(Long writerId, Comment commentId, ReplyRequestDto requestDto) {
+    public static Reply of(Long writerId, Comment comment, ReplyRequestDto requestDto) {
         return Reply.builder()
                 .writerId(writerId)
-                .commentId(commentId)
+                .comment(comment)
                 .reply(requestDto.getReply())
                 .build();
     }

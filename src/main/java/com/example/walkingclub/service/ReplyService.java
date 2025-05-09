@@ -33,7 +33,7 @@ public class ReplyService {
     @Transactional(readOnly = true)
     public List<ReplyResponseDto> getReplies(ReplyRequestDto requestDto) {
         Comment findComment = commentRepository.findById(requestDto.getCommentId()).orElseThrow();
-        List<Reply> replies = replyRepository.findByCommentId(findComment);
+        List<Reply> replies = replyRepository.findByComment(findComment);
         return replies.stream()
                 .map(ReplyResponseDto::toDto)
                 .collect(Collectors.toList());
@@ -44,7 +44,7 @@ public class ReplyService {
     public ReplyResponseDto updateReply(Long id, ReplyRequestDto requestDto) {
         Reply reply = replyRepository.findById(id).orElseThrow();
         reply.update(requestDto.getReply());
-        return ReplyResponseDto.builder().replyId(reply.getId()).build();
+        return ReplyResponseDto.toDto(reply);
     }
 
     // 대댓글 삭제

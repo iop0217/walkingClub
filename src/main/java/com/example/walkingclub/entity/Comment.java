@@ -16,30 +16,29 @@ public class Comment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "commentId")
+    @Column(name = "comment_id")
     private Long id;                    // 댓글 아이디
 
-    @JoinColumn(name = "writerId", nullable = false)
+    @JoinColumn(name = "writer_id", nullable = false)
     private Long writerId;              // 작성자 아이디
 
     @ManyToOne
-    @JoinColumn(name = "scheduleId", nullable = false)
-    private Schedule scheduleId;            // 일정 아이디
+    @JoinColumn(name = "schedule_id", nullable = false)
+    private Schedule schedule;          // 일정 아이디
 
     @Column
-    private String comment;             // 댓글 내용
+    private String comments;            // 댓글 내용
 
-    // 댓글 저장
-    public static Comment of(Long writerId, Schedule scheduleId, CommentRequestDto requestDto) {
+    public static Comment of(Long writerId, Schedule schedule, CommentRequestDto requestDto) {
         return Comment.builder()
                 .writerId(writerId)
-                .scheduleId(scheduleId)
-                .comment(requestDto.getComment())
+                .schedule(schedule)
+                .comments(requestDto.getComments())
                 .build();
     }
 
     // 댓글 수정
     public void update(String comment) {
-        this.comment = comment;
+        this.comments = comment;
     }
 }

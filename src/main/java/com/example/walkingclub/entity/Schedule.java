@@ -17,10 +17,10 @@ public class Schedule extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "scheduleId")
+    @Column(name = "schedule_id")
     private Long id;                    // 일정 아이디
 
-    @Column(nullable = false)
+    @Column(name = "writer_id", nullable = false)
     private Long writerId;              // 작성자 아이디
 
     @Column

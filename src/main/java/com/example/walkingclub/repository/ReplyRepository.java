@@ -11,5 +11,5 @@ import java.util.List;
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
 
     // 대댓글 조회
-    List<Reply> findByCommentId(Comment comment);
+    List<Reply> findByComment(Comment comment);
 }

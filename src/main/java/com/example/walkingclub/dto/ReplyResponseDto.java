@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class ReplyResponseDto {
     private Long writerId;              // 작성자 아아디
     private Long replyId;               // 대댓글 아이디
-    private String comment;             // 댓글 내용
+    private String comments;             // 댓글 내용
     private String reply;               // 대댓글 내용
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -29,7 +29,7 @@ public class ReplyResponseDto {
         return new ReplyResponseDto(
                 reply.getWriterId(),
                 reply.getId(),
-                reply.getComment(),
+                reply.getComments(),
                 reply.getReply(),
                 reply.getCreatedAt(),
                 reply.getUpdatedAt()

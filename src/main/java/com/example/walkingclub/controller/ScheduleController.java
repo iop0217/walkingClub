@@ -33,7 +33,6 @@ public class ScheduleController {
 
     // 일정 전체 조회
     @GetMapping
-    @JsonView(View.Gets.class)
     public ResponseEntity<List<ScheduleListResponseDto>> getSchedules() {
         List<ScheduleListResponseDto> listResponseDto = scheduleService.getSchedules();
         return ResponseEntity.ok(listResponseDto);

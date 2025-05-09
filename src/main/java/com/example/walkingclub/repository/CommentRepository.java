@@ -11,5 +11,5 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     // 댓글 조회
-    List<Comment> findByScheduleId(Schedule schedule);
+    List<Comment> findBySchedule(Schedule schedule);
 }

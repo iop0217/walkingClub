@@ -1,6 +1,7 @@
 package com.example.walkingclub.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommentRequestDto {
 
-    @NotBlank
+    @NotNull(groups = {View.Content.class, View.Id.class})
     private Long scheduleId;    // 일정 아이디
 
-    @NotBlank
     @Size(max = 1000)
-    private String comment;     // 댓글 내용
+    @NotBlank(groups = {View.Content.class, View.Contents.class})
+    private String comments;    // 댓글 내용
 }

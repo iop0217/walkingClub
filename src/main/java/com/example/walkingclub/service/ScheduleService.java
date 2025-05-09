@@ -43,7 +43,7 @@ public class ScheduleService {
     public ScheduleResponseDto updateSchedule(Long id, ScheduleRequestDto requestDto) {
         Schedule schedule = scheduleRepository.findById(id).orElseThrow();
         schedule.update(requestDto.getTitle(), requestDto.getContent());
-        return ScheduleResponseDto.builder().scheduleId(schedule.getId()).build();
+        return ScheduleResponseDto.toDto(schedule);
     }
 
     // 일정 삭제

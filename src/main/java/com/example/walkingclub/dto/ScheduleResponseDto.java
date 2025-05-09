@@ -19,7 +19,7 @@ public class ScheduleResponseDto {
     @JsonView({View.All.class})
     private Long writerId;              // 작성자 아아디
 
-    @JsonView({View.Create.class, View.Gets.class})
+    @JsonView(View.Create.class)
     private Long scheduleId;            // 일정 아이디
 
     @JsonView(View.Get.class)
@@ -28,14 +28,11 @@ public class ScheduleResponseDto {
     @JsonView({View.All.class})
     private String title;               // 일정 제목
 
-    @JsonView({View.Create.class, View.Get.class, View.Update.class})
+    @JsonView({View.All.class})
     private String content;             // 일정 내용
 
     @JsonView(View.Get.class)
-    private String comment;             // 댓글 내용
-
-    @JsonView(View.Gets.class)
-    private Long commentCount;          // 댓글 개수
+    private String comments;             // 댓글 내용
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonView({View.All.class})
