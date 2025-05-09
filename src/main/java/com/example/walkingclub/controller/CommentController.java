@@ -4,6 +4,7 @@ import com.example.walkingclub.dto.CommentRequestDto;
 import com.example.walkingclub.dto.CommentResponseDto;
 import com.example.walkingclub.dto.View;
 import com.example.walkingclub.service.CommentService;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class CommentController {
 
     // 댓글 저장
     @PostMapping
+    @JsonView(View.Create.class)
     public ResponseEntity<CommentResponseDto> createComment(
             @Validated(View.Content.class)
             @RequestBody CommentRequestDto requestDto
@@ -33,6 +35,7 @@ public class CommentController {
 
     // 댓글 조회
     @GetMapping
+    @JsonView(View.Gets.class)
     public ResponseEntity<List<CommentResponseDto>> getComments(
             @Validated(View.Id.class)
             @RequestBody CommentRequestDto requestDto
@@ -43,6 +46,7 @@ public class CommentController {
 
     // 댓글 수정
     @PutMapping("/{id}")
+    @JsonView(View.Update.class)
     public ResponseEntity<CommentResponseDto> updateComment(
             @PathVariable Long id,
             @Validated(View.Contents.class)

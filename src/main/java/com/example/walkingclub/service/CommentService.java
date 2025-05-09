@@ -23,7 +23,7 @@ public class CommentService {
     @Transactional
     public CommentResponseDto createComment(CommentRequestDto requestDto) {
         Schedule findSchedule = scheduleRepository.findById(requestDto.getScheduleId()).orElseThrow();
-        Comment create = Comment.of(findSchedule.getWriterId(), findSchedule, requestDto);
+        Comment create = Comment.of(findSchedule.getWriterId(), findSchedule,requestDto);
         Comment comment = commentRepository.save(create);
         return CommentResponseDto.toDto(comment);
     }

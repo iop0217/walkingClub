@@ -4,6 +4,7 @@ import com.example.walkingclub.dto.ReplyRequestDto;
 import com.example.walkingclub.dto.ReplyResponseDto;
 import com.example.walkingclub.entity.Comment;
 import com.example.walkingclub.entity.Reply;
+import com.example.walkingclub.entity.Schedule;
 import com.example.walkingclub.repository.CommentRepository;
 import com.example.walkingclub.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class ReplyService {
     @Transactional
     public ReplyResponseDto createReply(ReplyRequestDto requestDto) {
         Comment findComment = commentRepository.findById(requestDto.getCommentId()).orElseThrow();
-        Reply create = Reply.of(findComment.getWriterId(), findComment, requestDto);
+        Reply create = Reply.of(findComment.getWriterId(), findComment.getSchedule(), findComment, requestDto);
         Reply reply = replyRepository.save(create);
         return ReplyResponseDto.toDto(reply);
     }

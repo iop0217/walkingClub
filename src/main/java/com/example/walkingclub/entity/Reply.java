@@ -23,6 +23,10 @@ public class Reply extends BaseEntity {
     private Long writerId;              // 작성자 아이디
 
     @ManyToOne
+    @JoinColumn(name = "schedule_id", nullable = false)
+    private Schedule schedule;          // 일정 아이디
+
+    @ManyToOne
     @JoinColumn(name = "comment_id", nullable = false)
     private Comment comment;            // 댓글 아이디
 
@@ -33,9 +37,10 @@ public class Reply extends BaseEntity {
     private String reply;               // 대댓글 내용
 
     // 대댓글 저장
-    public static Reply of(Long writerId, Comment comment, ReplyRequestDto requestDto) {
+    public static Reply of(Long writerId, Schedule schedule, Comment comment, ReplyRequestDto requestDto) {
         return Reply.builder()
                 .writerId(writerId)
+                .schedule(schedule)
                 .comment(comment)
                 .reply(requestDto.getReply())
                 .build();
