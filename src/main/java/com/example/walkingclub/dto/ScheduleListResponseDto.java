@@ -1,6 +1,5 @@
 package com.example.walkingclub.dto;
 
-import com.example.walkingclub.entity.Schedule;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,15 +21,4 @@ public class ScheduleListResponseDto {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;    // 수정일
-
-    public static ScheduleListResponseDto toDto(Schedule schedule) {
-        return new ScheduleListResponseDto(
-                schedule.getWriterId(),
-                schedule.getId(),
-                schedule.getTitle(),
-                schedule.getCommentCount(),
-                schedule.getCreatedAt(),
-                schedule.getUpdatedAt()
-        );
-    }
 }

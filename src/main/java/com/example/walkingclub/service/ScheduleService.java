@@ -3,7 +3,9 @@ package com.example.walkingclub.service;
 import com.example.walkingclub.dto.ScheduleListResponseDto;
 import com.example.walkingclub.dto.ScheduleRequestDto;
 import com.example.walkingclub.dto.ScheduleResponseDto;
+import com.example.walkingclub.entity.Comment;
 import com.example.walkingclub.entity.Schedule;
+import com.example.walkingclub.repository.CommentRepository;
 import com.example.walkingclub.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
+    private final CommentRepository commentRepository;
 
     // 일정 생성
     @Transactional
@@ -27,15 +30,15 @@ public class ScheduleService {
     // 일정 전체 조회
     @Transactional(readOnly = true)
     public List<ScheduleListResponseDto> getSchedules() {
-        List<Schedule> schedules = scheduleRepository.findAll();
-        return schedules.stream().map(ScheduleListResponseDto::toDto).toList();
+        return scheduleRepository.findCommentCount();
     }
 
     // 일정 단건 조회
     @Transactional(readOnly = true)
     public ScheduleResponseDto getSchedule(Long id) {
         Schedule schedule = scheduleRepository.findById(id).orElseThrow();
-        return ScheduleResponseDto.toDto(schedule);
+        List<Comment> comments = commentRepository.findBySchedule(schedule);
+        return ScheduleResponseDto.toDto(schedule, comments);
     }
 
     // 일정 수정
