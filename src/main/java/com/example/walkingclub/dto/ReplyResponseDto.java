@@ -20,13 +20,13 @@ public class ReplyResponseDto {
     private Long writerId;              // 작성자 아아디
 
     @JsonView(View.Gets.class)
-    private Long scheduleId;          // 일정 아이디
+    private Long scheduleId;            // 일정 아이디
 
     @JsonView({View.Create.class, View.Gets.class})
     private Long replyId;               // 대댓글 아이디
 
     @JsonView(View.Gets.class)
-    private String comments;             // 댓글 내용
+    private String comments;            // 댓글 내용
 
     @JsonView(View.All.class)
     private String reply;               // 대댓글 내용
@@ -44,7 +44,7 @@ public class ReplyResponseDto {
                 reply.getWriterId(),
                 reply.getSchedule().getId(),
                 reply.getId(),
-                reply.getComments(),
+                reply.getComment().getComments(),
                 reply.getReply(),
                 reply.getCreatedAt(),
                 reply.getUpdatedAt()

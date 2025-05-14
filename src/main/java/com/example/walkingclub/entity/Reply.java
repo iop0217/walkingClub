@@ -22,11 +22,11 @@ public class Reply extends BaseEntity {
     @JoinColumn(name = "writer_id", nullable = false)
     private Long writerId;              // 작성자 아이디
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_id", nullable = false)
     private Schedule schedule;          // 일정 아이디
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_id", nullable = false)
     private Comment comment;            // 댓글 아이디
 

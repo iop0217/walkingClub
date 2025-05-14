@@ -22,7 +22,7 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "writer_id", nullable = false)
     private Long writerId;              // 작성자 아이디
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_id", nullable = false)
     private Schedule schedule;          // 일정 아이디
 

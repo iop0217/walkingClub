@@ -6,6 +6,7 @@ import com.example.walkingclub.dto.ScheduleResponseDto;
 import com.example.walkingclub.entity.Comment;
 import com.example.walkingclub.entity.Schedule;
 import com.example.walkingclub.repository.CommentRepository;
+import com.example.walkingclub.repository.ReplyRepository;
 import com.example.walkingclub.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
     private final CommentRepository commentRepository;
+    private final ReplyRepository replyRepository;
 
     // 일정 생성
     @Transactional
@@ -53,6 +55,8 @@ public class ScheduleService {
     @Transactional
     public void deleteSchedule(Long id) {
         Schedule schedule = scheduleRepository.findById(id).orElseThrow();
+        replyRepository.deleteBySchedule(schedule);
+        commentRepository.deleteBySchedule(schedule);
         scheduleRepository.delete(schedule);
     }
 }
