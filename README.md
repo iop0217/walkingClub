@@ -103,16 +103,16 @@ com.example.walkingclub
 ## 트러블슈팅
 
 - **작성자 ID가 null로 저장되는 문제**
-  로그인 없이 ID를 자동 증가시키는 요구사항이 있었고,
-  DTO 변환 또는 서비스 내부에서 writerId를 직접 지정해 해결
+  - 로그인 없이 ID를 자동 증가시키는 요구사항이 있었고,
+  - DTO 변환 또는 서비스 내부에서 writerId를 직접 지정해 해결
 
 - **일정 삭제 시 외래키 제약 오류 발생**
-  일정 삭제 시 연관된 대댓글 → 댓글 → 일정 순으로
-  서비스 계층에서 명시적으로 수동 삭제 처리하여 해결함
+  - 일정 삭제 시 연관된 대댓글 → 댓글 → 일정 순으로
+  - 서비스 계층에서 명시적으로 수동 삭제 처리하여 해결함
 
 - **대댓글 조회 시 Repository 메서드 타입 오류 발생**
-  `findByCommentId(Long)`으로 작성했으나 JPA는 `Comment` 타입을 기대하고 있었음
-  `findByComment(Comment)`로 수정하고, `.findById()`로 Entity 조회 후 넘겨서 해결
+  - `findByCommentId(Long)`으로 작성했으나 JPA는 `Comment` 타입을 기대하고 있었음
+  - `findByComment(Comment)`로 수정하고, `.findById()`로 Entity 조회 후 넘겨서 해결
 
 ---
 
