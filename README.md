@@ -18,13 +18,16 @@
 
 ## 패키지 구조
 
+
+```
 com.example.walkingclub
-├── controller: REST API 컨트롤러
-├── dto: 요청,응답 DTO, JsonView 정의
-├── entity: JPA Entity
-├── exception: 예외 처리
-├── repository: JPA Repository 인터페이스
-└── service: 비즈니스 로직 처리
+├── controller       // REST API 컨트롤러
+├── dto              // 요청, 응답 DTO + JsonView 정의
+├── entity           // JPA Entity
+├── exception        // 예외 처리
+├── repository       // JPA Repository 인터페이스
+└── service          // 비즈니스 로직 처리
+```
 
 ---
 
