@@ -37,7 +37,6 @@ public class Comment extends BaseEntity {
                 .build();
     }
 
-    // 댓글 수정
     public void update(String comment) {
         this.comments = comment;
     }

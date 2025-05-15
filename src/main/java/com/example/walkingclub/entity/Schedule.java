@@ -38,7 +38,6 @@ public class Schedule extends BaseEntity {
         this.writerId = (long) (Math.random() * 999) + 1;
     }
 
-    // 일정 수정
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

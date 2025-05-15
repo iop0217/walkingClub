@@ -36,7 +36,6 @@ public class Reply extends BaseEntity {
     @Column
     private String reply;               // 대댓글 내용
 
-    // 대댓글 저장
     public static Reply of(Long writerId, Schedule schedule, Comment comment, ReplyRequestDto requestDto) {
         return Reply.builder()
                 .writerId(writerId)
@@ -46,7 +45,6 @@ public class Reply extends BaseEntity {
                 .build();
     }
 
-    // 대댓글 수정
     public void update(String reply) {
         this.reply = reply;
     }
