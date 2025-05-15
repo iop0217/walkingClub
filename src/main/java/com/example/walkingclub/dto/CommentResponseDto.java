@@ -19,7 +19,7 @@ public class CommentResponseDto {
     @JsonView(View.All.class)
     private Long writerId;              // 작성자 아이디
 
-    @JsonView({View.Create.class, View.Gets.class})
+    @JsonView({View.Create.class, View.Gets.class, View.Get.class})
     private Long commentId;             // 댓글 아이디
 
     @JsonView(View.All.class)

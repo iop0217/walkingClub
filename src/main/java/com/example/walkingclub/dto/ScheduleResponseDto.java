@@ -25,9 +25,6 @@ public class ScheduleResponseDto {
     @JsonView(View.Create.class)
     private Long scheduleId;                        // 일정 아이디
 
-    @JsonView(View.Get.class)
-    private Long commentId;                         // 댓글 아이디
-
     @JsonView(View.All.class)
     private String title;                           // 일정 제목
 
