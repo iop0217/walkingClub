@@ -4,6 +4,7 @@ import com.example.walkingclub.dto.ReplyRequestDto;
 import com.example.walkingclub.dto.ReplyResponseDto;
 import com.example.walkingclub.entity.Comment;
 import com.example.walkingclub.entity.Reply;
+import com.example.walkingclub.exception.ServiceException;
 import com.example.walkingclub.repository.CommentRepository;
 import com.example.walkingclub.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,8 @@ public class ReplyService {
     // 대댓글 저장
     @Transactional
     public ReplyResponseDto createReply(ReplyRequestDto requestDto) {
-        Comment findComment = commentRepository.findById(requestDto.getCommentId()).orElseThrow();
+        Comment findComment = commentRepository.findById(requestDto.getCommentId())
+                .orElseThrow(() -> new ServiceException("해당 댓글을 찾을 수 없습니다"));
         Reply create = Reply.of(findComment.getWriterId(), findComment.getSchedule(), findComment, requestDto);
         Reply reply = replyRepository.save(create);
         return ReplyResponseDto.toDto(reply);
@@ -32,7 +34,8 @@ public class ReplyService {
     // 대댓글 조회
     @Transactional(readOnly = true)
     public List<ReplyResponseDto> getReplies(ReplyRequestDto requestDto) {
-        Comment findComment = commentRepository.findById(requestDto.getCommentId()).orElseThrow();
+        Comment findComment = commentRepository.findById(requestDto.getCommentId())
+                .orElseThrow(() -> new ServiceException("해당 댓글을 찾을 수 없습니다"));
         List<Reply> replies = replyRepository.findByComment(findComment);
         return replies.stream()
                 .map(ReplyResponseDto::toDto)
@@ -42,7 +45,8 @@ public class ReplyService {
     // 대댓글 수정
     @Transactional
     public ReplyResponseDto updateReply(Long id, ReplyRequestDto requestDto) {
-        Reply reply = replyRepository.findById(id).orElseThrow();
+        Reply reply = replyRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("해당 대댓글을 찾을 수 없습니다"));
         reply.update(requestDto.getReply());
         return ReplyResponseDto.toDto(reply);
     }
@@ -50,7 +54,8 @@ public class ReplyService {
     // 대댓글 삭제
     @Transactional
     public void deleteReply(Long id) {
-        Reply reply = replyRepository.findById(id).orElseThrow();
+        Reply reply = replyRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("해당 대댓글을 찾을 수 없습니다"));
         replyRepository.delete(reply);
     }
 }
