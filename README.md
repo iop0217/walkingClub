@@ -79,10 +79,10 @@ com.example.walkingclub
 ## JsonView / Validation 전략
 
 - `@JsonView`를 활용하여 요청 상황별로 필요한 응답 필드만 선택적으로 반환
-- 예: 전체 조회, 단건 조회, 생성 시 반환 필드가 다름
+  - 예: 전체 조회, 단건 조회, 생성 시 반환 필드가 다름
 
 - `@Validated(View.XXX.class)`로 유효성 검사 그룹 지정
-- 예: 댓글 생성 시 `scheduleId + comments` 필요, 수정 시 `comments`만 필요
+  - 예: 댓글 생성 시 `scheduleId + comments` 필요, 수정 시 `comments`만 필요
 
 → View 클래스를 통해 JsonView와 Validation 그룹을 일관되게 분리, 관리함
 
