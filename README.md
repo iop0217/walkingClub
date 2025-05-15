@@ -70,6 +70,22 @@ com.example.walkingclub
 
 ---
 
+## API 동작 예시
+
+### 일정 생성
+![일정 생성](https://github.com/user-attachments/assets/1d56d94c-21cf-47c5-a0bf-165fdfbbfec1)
+
+### 일정 단건 조회
+![일정 조회](https://github.com/user-attachments/assets/144bd456-14de-4b96-8ced-70bc90d3ba76)
+
+### 댓글 수정
+![댓글 수정](https://github.com/user-attachments/assets/5d48a94e-4047-4fc6-b99c-772ce301613e)
+
+### 대댓글 조회
+![대댓글 조회](https://github.com/user-attachments/assets/ec8387f6-da9f-4bac-8c82-eaeafe39564a)
+
+---
+
 ## ERD
 
 ![ERD](https://github.com/user-attachments/assets/3b372349-8495-4e2f-9258-397be4b303da)
